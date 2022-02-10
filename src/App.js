@@ -4,15 +4,19 @@ import Login from './components/auth/Login';
 import NewAccount from './components/auth/NewAccount';
 import Projects from './components/projects/Projects';
 
+import ProjectState from './context/projects/ProjectState';
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="new-account" element={<NewAccount />} />
-        <Route path="projects" element={<Projects />} />
-      </Routes>
-    </BrowserRouter>
+    <ProjectState>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="new-account" element={<NewAccount />} />
+          <Route path="projects" element={<Projects />} />
+        </Routes>
+      </BrowserRouter>
+    </ProjectState>
   );
 }
 
