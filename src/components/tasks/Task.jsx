@@ -2,7 +2,7 @@ import React from 'react';
 
 const Task = ({ task }) => {
     return (
-        <li className="tarea sombra">
+        <li key={task.name} className="tarea sombra">
             <p>{task.name}</p>
             <div className="estado">
                 {task.status ?

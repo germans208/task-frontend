@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Project from './Project';
+import projectContext from '../../context/projects/projectContext';
 
 const ListProjects = () => {
 
-    const projects = [
-        { name: 'Proyecto 1' },
-        { name: 'Proyecto 2' },
-        { name: 'Proyecto 3' }
-    ];
+    const projectsContext = useContext(projectContext);
+    const { projects, getProjects } = projectsContext;
+
+    useEffect(() => {
+        getProjects();
+    }, []);
+
+    if (projects.length === 0) return null;
 
     return (
         <ul className="listado-proyectos">
-            {
-                projects.map(project => (<Project project={project} />))
-            }
+            {projects.map(project => (
+                <Project
+                    key={project.id}
+                    project={project}
+                />
+            ))}
         </ul>
     );
 }
